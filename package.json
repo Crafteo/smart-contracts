@@ -1,5 +1,14 @@
 {
+  "scripts": {
+    "test": "truffle test",
+    "build": "truffle build",
+    "deploy:dev": "truffle deploy --network development",
+    "deploy:sepolia": "truffle deploy --network sepolia"
+  },
   "dependencies": {
-    "@openzeppelin/contracts": "^4.9.0"
+    "@openzeppelin/contracts": "^4.9.0",
+    "@truffle/hdwallet-provider": "^2.1.12",
+    "dotenv": "^16.1.4",
+    "web3": "^4.0.1"
   }
 }
