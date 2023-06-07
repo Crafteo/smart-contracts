@@ -23,8 +23,16 @@ const mnemonic = process.env["MNEMONIC"];
 const infuraProjectId = process.env["INFURA_PROJECT_ID"];
  
 const HDWalletProvider = require('@truffle/hdwallet-provider');
+const plugins = [];
+const api_keys = {};
 
+if(process.env['USE_TRUFFLE_VERIFY_PLUGIN'] && process.env['USE_TRUFFLE_VERIFY_PLUGIN']){
+  plugins.push('truffle-plugin-verify');
+  api_keys['bscscan'] = BSC_SCAN_API_KEY;
+}
 module.exports = {
+  plugins, 
+  api_keys,
   /**
    * Networks define how you connect to your ethereum client and let you set the
    * defaults web3 uses to send transactions. If you don't specify one truffle
@@ -58,12 +66,13 @@ module.exports = {
        timeoutBlocks: 200,
        skipDryRun: true
      },
-    //
-    // goerli: {
-    //   provider: () => new HDWalletProvider(mnemonic, `https://goerli.infura.io/v3/${infuraProjectId}`),
-    //   network_id: 5,       // Goerli's id
-    //   chain_id: 5
-    // }
+     bsc: {
+       provider: () => new HDWalletProvider(mnemonic, `https://bsc-dataseed1.binance.org`),
+       network_id: 56,
+       confirmations: 10,
+       timeoutBlocks: 200,
+       skipDryRun: true
+     }
   },
 
   // Set default mocha options here, use special reporters etc.

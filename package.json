@@ -4,7 +4,9 @@
     "build": "truffle build",
     "deploy:dev": "truffle deploy --network development",
     "deploy:sepolia": "truffle deploy --network sepolia",
-    "deploy:bsc_testnet": "truffle deploy --network bsc_testnet"
+    "deploy:bsc": "truffle deploy --network bsc",
+    "deploy:bsc_testnet": "truffle deploy --network bsc_testnet",
+    "migrate:sepolia": "truffle migrate --network sepolia"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.9.0",
