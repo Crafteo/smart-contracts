@@ -3,7 +3,8 @@
     "test": "truffle test",
     "build": "truffle build",
     "deploy:dev": "truffle deploy --network development",
-    "deploy:sepolia": "truffle deploy --network sepolia"
+    "deploy:sepolia": "truffle deploy --network sepolia",
+    "deploy:bsc_testnet": "truffle deploy --network bsc_testnet"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.9.0",
