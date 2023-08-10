@@ -16,19 +16,21 @@
  * public/private key pairs. If you're publishing your code to GitHub make sure you load this
  * phrase from a file you've .gitignored so it doesn't accidentally become public.
  *
- */
+ */  
+if(process.env.NETWORK){
+  require('dotenv').config({ override: true,  path: `.${ process.env.NETWORK }.env` });  
+}else{ 
+  require('dotenv').config();
+}
 
-require('dotenv').config();
-const mnemonic = process.env["MNEMONIC"];
-const infuraProjectId = process.env["INFURA_PROJECT_ID"];
- 
+const mnemonic = process.env["MNEMONIC"];   
 const HDWalletProvider = require('@truffle/hdwallet-provider');
-const plugins = [];
+const plugins = ["solidity-coverage"];
 const api_keys = {};
-
-if(process.env['USE_TRUFFLE_VERIFY_PLUGIN'] && process.env['USE_TRUFFLE_VERIFY_PLUGIN']){
+ 
+if(process.env['USE_TRUFFLE_VERIFY_PLUGIN'] && process.env['BSC_SCAN_API_KEY']){
   plugins.push('truffle-plugin-verify');
-  api_keys['bscscan'] = BSC_SCAN_API_KEY;
+  api_keys['bscscan'] = process.env.BSC_SCAN_API_KEY;
 }
 module.exports = {
   plugins, 
@@ -56,7 +58,7 @@ module.exports = {
       network_id: "*",       // Any network (default: none)
      }, 
      sepolia: { 
-       provider: () => new HDWalletProvider(mnemonic, `https://sepolia.infura.io/v3/${infuraProjectId}`),
+       provider: () => new HDWalletProvider(mnemonic, process.env.INFURA_PROJECT_URL),
        network_id: 11155111, 
      },
      bsc_testnet: {
