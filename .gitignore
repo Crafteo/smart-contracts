@@ -3,4 +3,9 @@ node_modules
 
 .env
 .env.local
-.env.development
+.env.development 
+
+.bsc_testnet.env
+.bsc.env
+
+*.flat.sol
