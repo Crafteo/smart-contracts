@@ -45,6 +45,12 @@ To build the contract code, run the following command:
 ```
 yarn run build
 ```
+## Testing
+
+To run tests, first set up Ganache to run on port 8545, then execute the following command:
+```
+yarn run test
+```
 ## Deployment
 - Development (Requires Ganache)
 ```
