@@ -11,7 +11,7 @@
     "flatten:token": "truffle-flattener ./contracts/CrafteoToken.sol > ./contracts/CrafteoToken.flat.sol"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^4.9.0",
+    "@openzeppelin/contracts": "^4.9.2",
     "@truffle/hdwallet-provider": "^2.1.12",
     "cross-env": "^7.0.3",
     "dotenv": "^16.1.4",
