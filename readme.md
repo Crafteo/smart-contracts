@@ -8,8 +8,8 @@ This repository contains the code, dependencies, and scripts required to compile
 ## Prerequisites
 
 - Node.js v12.x or higher
-- Truffle v5.11.2  
-- Ganache for local development testing
+- [Truffle](https://trufflesuite.com/) v5.11.2  
+- [Ganache](https://trufflesuite.com/docs/ganache/quickstart/) for local development testing
 
 ## Installation
 
