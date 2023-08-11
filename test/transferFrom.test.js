@@ -2,7 +2,6 @@ const CrafteoToken = artifacts.require('../contracts/CrafteoToken');
 const Assert = require('truffle-assertions');
 
 contract('transferFrom test', (accounts) => {
-    const tokenTotalSupply = 1000000000;
 
     let contractInstance;
     const ownerAddress = accounts[0];
@@ -14,7 +13,7 @@ contract('transferFrom test', (accounts) => {
     });
 
     beforeEach(async () => {
-        contractInstance = await CrafteoToken.new(tokenTotalSupply);
+        contractInstance = await CrafteoToken.new();
     });
 
     it('transferFrom should throw if balance is insufficient', async () => {
@@ -32,10 +31,12 @@ contract('transferFrom test', (accounts) => {
     });
 
     it('transferFrom success', async () => {
-        await contractInstance.transfer(address1, 1000, { from: ownerAddress });
         await contractInstance.approve(address1, 1000, { from: ownerAddress });
         const result = await contractInstance.transferFrom(ownerAddress, address2, 1000, { from: address1 });
         
         Assert.eventEmitted(result, 'Transfer');
+
+        const address2Balance = await contractInstance.balanceOf(address2, { from: address1 }); 
+        assert.equal(address2Balance.toString(), 1000, 'tokens are not transferred to the destination address');
     });
 });

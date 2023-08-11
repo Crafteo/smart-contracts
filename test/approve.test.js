@@ -2,9 +2,6 @@ const CrafteoToken = artifacts.require('../contracts/CrafteoToken');
 const Assert = require('truffle-assertions');
 
 contract('approve test', (accounts) => {
-
-    const tokenTotalSupply = 1000000000;
-
     let contractInstance;
     const ownerAddress = accounts[0];
     const address1 = accounts[1];
@@ -14,7 +11,7 @@ contract('approve test', (accounts) => {
     });
 
     beforeEach(async () => {
-        contractInstance = await CrafteoToken.new(tokenTotalSupply);
+        contractInstance = await CrafteoToken.new();
     });
 
     it('should not approve to zero address', async () => {  
@@ -35,5 +32,8 @@ contract('approve test', (accounts) => {
         const result = await contractInstance.approve(address1, 1000, { from: ownerAddress });
         
         Assert.eventEmitted(result, 'Approval');
+        
+        const address1Allowance = await contractInstance.allowance(ownerAddress, address1, { from: ownerAddress }); 
+        assert.equal(address1Allowance, '1000', 'allowance amount is not correct');
     });
 });

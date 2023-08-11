@@ -1,7 +1,8 @@
 const CrafteoToken = artifacts.require('../contracts/CrafteoToken');
+const Web3 = require('web3');
 
-contract('balanceOf test', (accounts) => {
-    const tokenTotalSupply = 1000000000;
+contract('balanceOf test', (accounts) => { 
+    const tokenTotalSupply = Web3.utils.toWei('1000000000', 'ether');
     
     let contractInstance;
     const ownerAddress = accounts[0];
@@ -11,12 +12,12 @@ contract('balanceOf test', (accounts) => {
     });
 
     beforeEach(async () => {
-        contractInstance = await CrafteoToken.new(tokenTotalSupply);
+        contractInstance = await CrafteoToken.new();
     });
 
     it('should return account balance correctly', async () => {
         const result = await contractInstance.balanceOf(ownerAddress, { from: ownerAddress });
         
-        assert.equal(result.toNumber(), tokenTotalSupply, 'balance is wrong');
+        assert.equal(result, tokenTotalSupply, 'balance is wrong');
     });
 });
