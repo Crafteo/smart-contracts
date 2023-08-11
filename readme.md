@@ -1,6 +1,6 @@
 # CrafteoToken
 
-The CrafteoToken is a Solidity smart contract built on the ERC20 standard. 
+The CrafteoToken is a Solidity smart contract built on the BEP20 standard. 
 This repository contains the code, dependencies, and scripts required to compile, build, test, and deploy the contract.
 
 
