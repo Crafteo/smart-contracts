@@ -2,7 +2,7 @@ const CrafteoToken = artifacts.require('../contracts/CrafteoToken');
 
 contract('constructor test', (accounts) => {
 
-    const tokenName = 'Crafteo AI';
+    const tokenName = 'CrafteoAI';
     const tokenSymbol = 'NFTC';
     const tokenDecimals = 18;
     const tokenTotalSupply = 1000000000;

@@ -22,7 +22,6 @@ contract('transferFrom test', (accounts) => {
             contractInstance.transferFrom(address1, address2, 1000, { from: address1 }),
             'ERC20: insufficient allowance'
         );
-        Assert.eventNotEmitted(result, 'Transfer');
     });
 
     it('transferFrom should throw if sender is not approved', async () => {

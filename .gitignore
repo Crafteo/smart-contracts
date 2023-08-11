@@ -7,5 +7,6 @@ node_modules
 
 .bsc_testnet.env
 .bsc.env
+.sepolia.env
 
 *.flat.sol
