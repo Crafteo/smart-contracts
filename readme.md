@@ -15,9 +15,9 @@ This repository contains the code, dependencies, and scripts required to compile
 
 1. **Clone the repository**
 ```
-git clone https://github.com/crafteo/CrafteoToken.git
+git clone https://github.com/crafteo/smart-contracts.git
 
-cd CrafteoToken
+cd smart-contracts
 ```
 2. **Install dependencies**
 ```
